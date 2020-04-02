@@ -2,6 +2,7 @@
   .Index.full-height.flex-center.flex-column
     img(:src="icon", width="100px", height="100px")
     div.mt2(style="font-size: 15px") {{name}}
+    div.mt1(style="font-size: 15px") v{{version}}
 </template>
 
 <script>
@@ -15,7 +16,8 @@ export default {
   data () {
     return {
       icon: appInfo.getIcon(),
-      name: appInfo.getName()
+      name: appInfo.getName(),
+      version: appInfo.getVersion()
     }
   },
   mounted () {

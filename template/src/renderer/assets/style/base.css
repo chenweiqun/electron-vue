@@ -9,6 +9,7 @@ body {
   height: 100%;
 }
 .flex-center {
+  display: flex;
   -ms-flex-align: center;
   align-items: center;
   -ms-flex-pack: center;
