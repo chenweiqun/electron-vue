@@ -18,7 +18,6 @@ npm run build
 npm run setup:win32
 
 # generate uuid
-
 npm run gen:uuid
 
 {{#testing unit e2e}}

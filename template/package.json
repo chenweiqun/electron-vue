@@ -42,7 +42,7 @@
     {{#if unit}}
     "unit": "karma start test/unit/karma.conf.js",
     {{/if}}
-    "postinstall": "{{#if eslint}}npm run lint:fix{{/if}}"
+    "postinstall": "{{#if eslint}}npm run lint:fix{{/if}}",
     "gen:uuid": "node .electron-vue/gen-uuid.js"
   },
   {{#if_eq builder 'builder'}}

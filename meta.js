@@ -75,7 +75,7 @@ module.exports = {
         type: 'confirm',
         message: 'Use Sass / Scss?',
         required: true,
-        default: true
+        default: false
     },
     plugins: {
       type: 'checkbox',
@@ -115,13 +115,13 @@ module.exports = {
       type: 'confirm',
       message: 'Set up unit testing with Karma + Mocha?',
       required: true,
-      default: true
+      default: false
     },
     e2e: {
       type: 'confirm',
       message: 'Set up end-to-end testing with Spectron + Mocha?',
       require: true,
-      default: true
+      default: false
     },
     builder: {
       type: 'list',
@@ -185,7 +185,6 @@ module.exports = {
     '.travis.yml': 'builder === \'builder\''
   },
   complete (data) {
-    console.log(data)
     getCurrentSHA(data.author).then(sha => {
       let path = !data.inPlace ? data.destDirName : null
       if (path !== null) appendSHALink(sha, path)
