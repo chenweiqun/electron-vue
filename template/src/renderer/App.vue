@@ -1,17 +1,16 @@
-<template>
-  <div id="app">
+<template lang="pug">
+  div(style="height:100vh;width:100vw")
     {{#isEnabled plugins 'vue-router'}}
-    <router-view></router-view>
+    router-view
     {{else}}
-    <landing-page></landing-page>
+    <Index></Index>
     {{/isEnabled}}
-  </div>
 </template>
 
 <script>
 {{#isEnabled plugins 'vue-router'}}
 {{else}}
-  import LandingPage from '@/components/LandingPage'
+  import Index from '@/pages/Index/Index'
 
 {{/isEnabled}}
   export default {
@@ -19,7 +18,7 @@
 {{#isEnabled plugins 'vue-router'}}
 {{else}}
     components: {
-      LandingPage
+      Index
     }
 {{/isEnabled}}
   }

@@ -108,6 +108,10 @@ let rendererConfig = {
         }
       },
       {
+        test: /\.pug$/,
+          loader: 'pug-plain-loader'
+      },
+      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         use: {
           loader: 'url-loader',
@@ -148,8 +152,11 @@ let rendererConfig = {
   },
   resolve: {
     alias: {
-      '@': path.join(__dirname, '../src/renderer'),
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      'src': path.join(__dirname, '../src/renderer'),
+      'pages': path.join(__dirname, '../src/renderer/components/pages'),
+      'views': path.join(__dirname, '../src/renderer/components/views'),
+      'assets': path.join(__dirname, '../src/renderer/assets')
     },
     extensions: ['.js', '.vue', '.json', '.css', '.node']
   },

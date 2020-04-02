@@ -74,7 +74,8 @@ module.exports = {
     usesass: {
         type: 'confirm',
         message: 'Use Sass / Scss?',
-        required: true
+        required: true,
+        default: true
     },
     plugins: {
       type: 'checkbox',
@@ -113,26 +114,28 @@ module.exports = {
     unit: {
       type: 'confirm',
       message: 'Set up unit testing with Karma + Mocha?',
-      required: true
+      required: true,
+      default: true
     },
     e2e: {
       type: 'confirm',
       message: 'Set up end-to-end testing with Spectron + Mocha?',
-      require: true
+      require: true,
+      default: true
     },
     builder: {
       type: 'list',
       message: 'What build tool would you like to use?',
       choices: [
         {
-          name: 'electron-builder (https://github.com/electron-userland/electron-builder)',
-          value: 'builder',
-          short: 'builder'
-        },
-        {
           name: 'electron-packager (https://github.com/electron-userland/electron-packager)',
           value: 'packager',
           short: 'packager'
+        },
+        {
+          name: 'electron-builder (https://github.com/electron-userland/electron-builder)',
+          value: 'builder',
+          short: 'builder'
         }
       ]
     }
@@ -182,6 +185,7 @@ module.exports = {
     '.travis.yml': 'builder === \'builder\''
   },
   complete (data) {
+    console.log(data)
     getCurrentSHA(data.author).then(sha => {
       let path = !data.inPlace ? data.destDirName : null
       if (path !== null) appendSHALink(sha, path)

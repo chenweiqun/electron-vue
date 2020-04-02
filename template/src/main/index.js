@@ -2,7 +2,7 @@
 'use strict'
 
 {{/if_eq}}
-import { app, BrowserWindow } from 'electron'{{#if_eq eslintConfig 'airbnb'}} // eslint-disable-line{{/if_eq}}
+import { app, BrowserWindow, Menu } from 'electron'{{#if_eq eslintConfig 'airbnb'}} // eslint-disable-line{{/if_eq}}
 
 /**
  * Set `__static` path to static files in production
@@ -32,6 +32,7 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+  Menu.setApplicationMenu(null)
 }
 
 app.on('ready', createWindow)
