@@ -1,10 +1,10 @@
 const fse = require('fs-extra')
-const png2icons = require('png2icons')
+const png2icons = require("png2icons");
 const path = require('path')
-const exeIconPath = path.resolve(__dirname, '..', 'build/icons/256x256.png')
-const installIconPath = path.resolve(__dirname, '..', 'build/icons/install.png')
 const savePath = path.resolve(__dirname, '..', 'build/icons')
-
+const jimp = require('jimp')
+const iconSizeList = [64, 128, 256, 512]
+const icoSize = 256
 const createIcon = (orginIcon, targetName) => {
   try {
     if (fse.pathExistsSync(orginIcon) === false) {
@@ -24,9 +24,18 @@ const createIcon = (orginIcon, targetName) => {
   }
 }
 
-const main = () => {
+const main = async () => {
   try {
-    createIcon(exeIconPath, 'icon')
+    const icoPath = path.resolve(__dirname, '..', `build/icons/${icoSize}x${icoSize}.png`)
+    const installIconPath = path.resolve(__dirname, '..', 'build/icons/install.png')
+    const exeIconPath = path.resolve(__dirname, '..', 'build/icons/icon.png')
+    for (let i = 0;i < iconSizeList.length; i++) {
+      const size = iconSizeList[i]
+      const img = await jimp.read(exeIconPath)
+      await img.resize(size, size)
+      img.write(path.resolve(__dirname, '..', `build/icons/${size}x${size}.png`))
+    }
+    createIcon(icoPath, 'icon')
     createIcon(installIconPath, 'install')
   } catch (error) {
     throw error
