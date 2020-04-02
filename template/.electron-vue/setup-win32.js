@@ -90,6 +90,8 @@ const main = async () => {
       if (iconFileName.indexOf('install') !== -1) continue
       await fse.copyFile(nodePath.join(iconPath, iconFileName), nodePath.join(buildPath, iconFileName))
     }
+    // 写入软件配置到本地
+    fse.outputJSONSync(nodePath.join(buildPath, 'appInfo.json'), setupEnvConfig)
     // 使用resource-hack修改上述目录的exe文件的图标
     await setIcon(buildAppExePath, buildAppIconPath)
     // 创建inno-setup脚本文件

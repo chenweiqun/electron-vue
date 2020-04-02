@@ -1,10 +1,12 @@
 <template lang="pug">
-  .Index
-    div Index
+  .Index.full-height.flex-center.flex-column
+    img(:src="icon", width="100px", height="100px")
+    div.mt2(style="font-size: 15px") {{name}}
 </template>
 
 <script>
 
+import appInfo from 'src/utils/appInfo'
 export default {
   name: 'Index',
   props: {
@@ -12,16 +14,17 @@ export default {
   },
   data () {
     return {
-
+      icon: appInfo.getIcon(),
+      name: appInfo.getName()
     }
   },
   mounted () {
+
   },
   methods: {
 
   },
   computed: {
-
   },
   components: {
 
