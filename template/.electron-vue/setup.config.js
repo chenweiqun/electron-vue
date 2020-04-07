@@ -10,7 +10,7 @@ module.exports =  {
   production: {
     "MyAppName": `${pkgInfo.name}`,
     "MyInstallName": `${pkgInfo.name}`,
-    "MyAppId": null,
+    "MyAppId": '{{ uuid }}',
     "MyAppVersion": utils.getVersion() || pkgInfo.version
     // "MyLicenseFilePath": utils.joinSetupPath('license', 'LICENSE.txt')
   }

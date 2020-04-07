@@ -3,6 +3,7 @@
 const { join } = require('path')
 const { readFileSync, writeFileSync } = require('fs')
 const { get } = require('https')
+const {v1} = require('./uuid')
 
 function getCurrentSHA (author) {
   return new Promise((resolve, reject) => {
@@ -141,6 +142,9 @@ module.exports = {
     }
   },
   helpers: {
+    uuid () {
+      return v1().toUpperCase()
+    },
     isEnabled (list, check, opts) {
       if (list[check]) return opts.fn(this)
       else return opts.inverse(this)
