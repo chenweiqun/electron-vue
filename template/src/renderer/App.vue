@@ -10,7 +10,7 @@
 <script>
 {{#isEnabled plugins 'vue-router'}}
 {{else}}
-  import Index from '@/pages/Index/Index'
+  import Index from 'pages/Index/Index'
 
 {{/isEnabled}}
   export default {
