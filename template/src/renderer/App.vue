@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(style="height:100vh;width:100vw")
+  div
     {{#isEnabled plugins 'vue-router'}}
     router-view
     {{else}}
